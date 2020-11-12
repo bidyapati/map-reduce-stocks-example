@@ -13,7 +13,7 @@ Here is the columns in csv
 7 volume
 8 adj_close
 
-Example Data:
+# Example Data:
 
 NYSE,AEA,2010-02-08,4.42,4.42,4.21,4.24,205500,4.24
 
@@ -32,5 +32,13 @@ NYSE,AEA,2010-01-29,4.97,5.05,4.76,4.83,222900,4.83
 NYSE,AEA,2010-01-28,5.12,5.22,4.81,4.98,283100,4.98
 
 
+# Map reduce command:
 
+hadoop jar /mnt/home/bidya/jars/bidya-hadoop-stocks-example-0.0.1-SNAPSHOT.jar com.bidya.bd.stocks.StockVolume stocks/NYSE.csv stocks_vol_out
+
+hadoop jar /mnt/home/bidya/jars/bidya-hadoop-stocks-example-0.0.1-SNAPSHOT.jar com.bidya.bd.stocks.StockMax stocks/NYSE.csv stocks_max_out
+
+hadoop jar /mnt/home/bidya/jars/bidya-hadoop-stocks-example-0.0.1-SNAPSHOT.jar com.bidya.bd.stocks.StockMin stocks/NYSE.csv stocks_min_out
+
+hadoop jar /mnt/home/bidya/jars/bidya-hadoop-stocks-example-0.0.1-SNAPSHOT.jar com.bidya.bd.stocks.StockAvg stocks/NYSE.csv stocks_avg_out
 
