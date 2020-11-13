@@ -20,6 +20,9 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 63891 20130101  5.102  -86.61   32.85    12.8     9.6    11.2    11.6    19.4 -9999.00 U -9999.0 -9999.0 -9999.0 -9999.0 -9999.0 -9999.0 -99.000 -99.000 -99.000 -99.000 -99.000 -9999.0 -9999.0 -9999.0 -9999.0 -9999.0
 63891 20130102  5.102  -86.61   32.85    10.1     3.8     7.0     6.2     0.4 -9999.00 U -9999.0 -9999.0 -9999.0 -9999.0 -9999.0 -9999.0 -99.000 -99.000 -99.000 -99.000 -99.000 -9999.0 -9999.0 -9999.0 -9999.0 -9999.0
 63891 20130103  5.102  -86.61   32.85     7.0    -2.2     2.4     2.9     0.0 -9999.00 U -9999.0 -9999.0 -9999.0 -9999.0 -9999.0 -9999.0 -99.000 -99.000 -99.000 -99.000 -99.000 -9999.0 -9999.0 -9999.0 -9999.0 -9999.0
+ 
+ * Only mapper is required here.
+ *
  */
 public class WeatherCalc {
 
@@ -52,6 +55,8 @@ public class WeatherCalc {
         	out = "A Hot Day";
         } else if (min < 10) {
         	out = "A Cold Day";
+        } else {
+        	return;
         }
         
         Text dateWrite = new Text(dateTmp);
@@ -62,7 +67,7 @@ public class WeatherCalc {
 
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
-    Job job = Job.getInstance(conf, "Max Temp Calculator");
+    Job job = Job.getInstance(conf, "Weather Calculator");
     job.setJarByClass(WeatherCalc.class);
     job.setMapperClass(WeatherMapper.class);
     job.setNumReduceTasks(0);
